@@ -1,20 +1,23 @@
 <template>
   <li>
-    <h3>{{ service }}</h3>
+    <h3>{{ serviceName }}</h3>
     <h4>{{ price }}/zl</h4>
     <div>
       <base-badge :type="city" :title="city"></base-badge>
+    </div>
+    <div class="actions">
+      <base-button link :to="serviceDetailsLink">View Details</base-button>
     </div>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['serviceName', 'description', 'price', 'city'],
+  props: ['id', 'serviceName', 'description', 'price', 'city'],
   computed: {
-    service() {
-      return this.serviceName;
-    }
+    serviceDetailsLink() {
+      return this.$route.path + '/' + this.id; // /services/1
+    },
   }
 }
 </script>
@@ -38,5 +41,10 @@ h4 {
 
 div {
   margin: 0.5rem 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

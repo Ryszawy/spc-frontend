@@ -6,6 +6,7 @@
           <service-item 
             v-for="service in filteredServices"
             :key="service.id" 
+            :id="service.id"
             :service-name="service.serviceName"
             :description="service.description"
             :price="service.price"
