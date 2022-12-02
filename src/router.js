@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import ServicesList from './components/pages/services/ServicesList.vue';
-import UserServices from './components/pages/user/UserServices.vue'
+import ServicesList from './pages/services/ServicesList.vue'
+import UserServices from './pages/user/UserServices.vue'
 
 const router = createRouter({
   history: createWebHistory(),
