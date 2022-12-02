@@ -12,21 +12,21 @@ export default {
           serviceName: 'Service 1',
           description: 'This is Service 1',
           price: 300,
-          city: ['Warszawa', 'Lodz', 'Poznan'],
+          city: 'lodz',
         }, 
         {
           id: '2',
           serviceName: 'Service 2',
           description: 'This is Service 2',
           price: 200,
-          city: ['Lodz', 'Poznan'],
+          city: 'poznan',
         },
         {
           id: '3',
           serviceName: 'Service 3',
           description: 'This is Service 3',
           price: 100,
-          city: ['Lodz', 'Krakow'],
+          city: 'krakow',
         }
       ],
     };

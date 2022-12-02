@@ -1,12 +1,16 @@
 <template>
   <li>
     <h3>{{ service }}</h3>
+    <h4>{{ price }}/zl</h4>
+    <div>
+      <base-badge :type="city" :title="city"></base-badge>
+    </div>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['serviceName'],
+  props: ['serviceName', 'description', 'price', 'city'],
   computed: {
     service() {
       return this.serviceName;
@@ -25,5 +29,14 @@ li {
 
 h3 {
   font-size: 1.5rem;
+}
+
+h3,
+h4 {
+  margin: 0.5rem 0;
+}
+
+div {
+  margin: 0.5rem 0;
 }
 </style>

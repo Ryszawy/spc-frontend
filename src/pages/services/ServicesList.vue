@@ -7,6 +7,9 @@
             v-for="service in filteredServices"
             :key="service.id" 
             :service-name="service.serviceName"
+            :description="service.description"
+            :price="service.price"
+            :city="service.city"
           ></service-item>
         </ul>
       </base-card>
