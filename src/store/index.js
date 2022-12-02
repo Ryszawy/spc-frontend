@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 
-import servicesModule from './modules/services.js';
+import servicesModule from './modules/services/index.js';
 
 const store = createStore({
   modules: {
