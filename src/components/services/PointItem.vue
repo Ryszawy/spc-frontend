@@ -3,10 +3,10 @@
     <h3>{{ name }}</h3>
     <h4>{{ description }}</h4>
     <div>
-      <span v-for="city in cities" :key="city">{{ city }}</span>
+      <base-badge v-for="city in cities" :key="city" :type="city" :title="city"></base-badge>
     </div>
     <div class="actions">
-      <router-link :to="servicePointDetailsLink">View Details</router-link>
+      <base-button link :to="servicePointDetailsLink">View Details</base-button>
     </div>
   </li>
 </template>
