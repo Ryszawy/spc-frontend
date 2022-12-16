@@ -1,8 +1,8 @@
 export default {
-  services(state) {
-    return state.services;
+  servicePoints(state) {
+    return state.servicePoints;
   },
-  hasServices(state) {
-    return state.services && state.services.length > 0;
+  hasServicePoints(state) {
+    return state.servicePoints && state.servicePoints.length > 0;
   },
 };

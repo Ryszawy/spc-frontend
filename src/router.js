@@ -1,16 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import ServicesList from './pages/services/ServicesList.vue';
+import ServicePointsList from './pages/services/ServicePointsList.vue'
 import UserServices from './pages/user/UserServices.vue';
-import ServiceDetail from './pages/services/ServiceDetail.vue';
+import ServicePointDetail from './pages/services/ServicePointDetail.vue';
+import ServiceItem from './components/services/ServiceItem.vue';
+import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/services' },
-    { path: '/services', component: ServicesList },
-    { path: '/services/:id', component: ServiceDetail },
-    { path: '/userservices', component: UserServices },
+    { path: '/', redirect: '/servicesPoint' },
+    { path: '/servicesPoint', component: ServicePointsList },
+    { path: '/servicesPoint/:id', component: ServicePointDetail },
+    { path: '/servicesPoint/:id/:serviceId', component: ServiceItem },  //servicesPoint/sp1/p1s1
+    { path: '/userServices', component: UserServices },
+    { path: '/:notFound(.*)', component: NotFound },
   ],
 });
 

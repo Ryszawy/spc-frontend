@@ -4,10 +4,10 @@
       <h1><router-link to="/">Skyflow</router-link></h1>
       <ul>
         <li>
-          <router-link to="/services">All services</router-link>
+          <router-link to="/servicesPoint">All services</router-link>
         </li>
         <li>
-          <router-link to="/userservices">My services</router-link>
+          <router-link to="/userServices">My services</router-link>
         </li>
       </ul>
     </nav>
