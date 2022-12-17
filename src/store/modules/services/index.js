@@ -6,6 +6,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      availableCities: ['lodz', 'poznan', 'krakow', 'warszawa'],
       servicePoints: [
         {
           idPoint: 'sp1',
