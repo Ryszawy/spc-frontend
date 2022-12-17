@@ -8,7 +8,6 @@
       <input type="checkbox" :id="city" checked @change="setFilter"/>
       <label :for="city">{{ city.toUpperCase() }}</label> 
     </span>
-    <p v-for="i in this.filters" :key="i">{{ i }}</p>
   </base-card>
 </template>
 

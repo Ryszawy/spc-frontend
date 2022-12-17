@@ -4,7 +4,6 @@
   </section>
   <section>
     <base-card>
-      <p v-for="i in this.activeFilters" :key="i">{{ i }}</p>
       <div class="controls">
         <base-button mode="outline">Refresh</base-button>
         <base-button link to="/login">Login</base-button>
@@ -42,16 +41,51 @@ export default {
   computed: {
     filteredServicePoints() {
       const points = this.$store.getters['services/servicePoints'];
-      // return points.filter(point => {
-      //   for (const city in this.activeFilters) {
-      //     if (city && point.cities.includes(`${city}`)) {
-      //       return true;
-      //     }
-      //     return false;
-      //   }
-      // });
-      return points;
+      return points.filter(point => {
+         if (this.activeFilters.lodz && point.cities.includes('lodz')) {
+          return true;
+        }
+        if (this.activeFilters.poznan && point.cities.includes('poznan')) {
+          return true;
+        }
+        if (this.activeFilters.krakow && point.cities.includes('krakow')) {
+          return true;
+        }
+        if (this.activeFilters.warszawa && point.cities.includes('warszawa')) {
+          return true;
+        }
+        return false;
+      });
     },
+    // test() {
+    //   const points = this.$store.getters['services/servicePoints'];
+    //   return points.filter(point => {
+    //     for (const key in this.activeFilters) {
+    //       console.log(`${key}: ${this.activeFilters[key]}`);
+    //       if (this.activeFilters[key] && point.cities.includes(`${key}`)) {
+    //         return true;
+    //       } else {
+    //         return false;
+    //       }
+    //     }
+    //     this.activeFilters.filter(key => {
+
+    //     })
+    //     if (this.activeFilters.lodz && point.cities.includes('lodz')) {
+    //       return true;
+    //     }
+    //     if (this.activeFilters.poznan && point.cities.includes('poznan')) {
+    //       return true;
+    //     }
+    //     if (this.activeFilters.krakow && point.cities.includes('krakow')) {
+    //       return true;
+    //     }
+    //     if (this.activeFilters.warszawa && point.cities.includes('warszawa')) {
+    //       return true;
+    //     }
+    //     return false;
+    //   });
+    // },
     hasServicePoints() {
       return this.$store.getters['services/hasServicePoints'];
     },

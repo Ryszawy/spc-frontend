@@ -3,11 +3,12 @@
     <base-card>
       <h2>{{ name }}</h2>
       <p>{{ description }}</p>
+      <base-badge v-for="city in cities" :key="city" :type="city" :title="city"></base-badge>
     </base-card>
   </section>
   <section>
     <base-card>
-      <base-badge v-for="city in cities" :key="city" :type="city" :title="city"></base-badge>
+      <service-filter></service-filter>
     </base-card>
   </section>
   <section>
@@ -30,11 +31,13 @@
 
 <script>
 import ServiceItem from '@/components/services/ServiceItem.vue';
+import ServiceFilter from '@/components/services/ServiceFilter.vue';
 
 export default {
   props: ['id'],
   components: {
     ServiceItem,
+    ServiceFilter,
   },
   data() {
     return {
