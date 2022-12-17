@@ -4,7 +4,7 @@
         <h2>Service Name</h2>
       </header>
       <input
-        placeholder="serviceName"
+        placeholder="Type service name..."
         type="text"
         id="serviceName"
         v-model.trim="inputText"
