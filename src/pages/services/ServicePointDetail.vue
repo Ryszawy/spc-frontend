@@ -8,7 +8,7 @@
   </section>
   <section>
     <base-card>
-      <service-filter></service-filter>
+      <service-filter @minValue="setMin" @maxValue="setMax" @serviceName="setText"></service-filter>
     </base-card>
   </section>
   <section>
@@ -42,6 +42,9 @@ export default {
   data() {
     return {
       selectedPoint: null,
+      min: 0,
+      max: 1000,
+      text: '',
     };
   },
   computed: {
@@ -55,10 +58,27 @@ export default {
       return this.selectedPoint.cities;
     },
     services() {
-      return this.selectedPoint.services;
+      const services = this.selectedPoint.services;
+      return services.filter(service => {
+        if (service.price >= this.min && service.price <= this.max && service.serviceName.toLowerCase().includes(this.text.toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
     },
     hasServices() {
       return this.selectedPoint.services && this.selectedPoint.services.length > 0;
+    }
+  },
+  methods: {
+    setMin(min) {
+      this.min = min;
+    },
+    setMax(max) {
+      this.max = max;
+    },
+    setText(name) {
+      this.text = name;
     }
   },
   created() {

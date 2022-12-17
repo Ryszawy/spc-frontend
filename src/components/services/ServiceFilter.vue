@@ -7,6 +7,8 @@
         placeholder="serviceName"
         type="text"
         id="serviceName"
+        v-model.trim="inputText"
+        @input="$emit('serviceName', $event.target.value)"
       />
     </div>
   <div class="wrapper">
@@ -17,30 +19,31 @@
       <div class="price-input">
         <div class="field">
           <span>Min</span>
-          <input type="number" class="input-min" v-model="selectedMin">
+          <input type="number" class="input-min" v-model.number="selectedMin" @input="$emit('minValue', $event.target.value)">
         </div>
         <div class="separator">-</div>
         <div class="field">
           <span>Max</span>
-          <input type="number" class="input-max" v-model="selectedMax">
+          <input type="number" class="input-max" v-model.number="selectedMax" @input="$emit('maxValue', $event.target.value)">
         </div>
       </div>
       <div class="slider">
         <div class="progress" :style="{ left: percentageValueMin, right: percentageValueMax }"></div>
       </div>
       <div class="range-input">
-        <input type="range" class="range-min" :min="minValue" :max="maxValue" step="10" v-model.number="selectedMin" />
-        <input type="range" class="range-max" :min="minValue" :max="maxValue" step="10" v-model.number="selectedMax" />
+        <input type="range" class="range-min" :min="minValue" :max="maxValue" step="10" v-model.number="selectedMin" @input="$emit('minValue', $event.target.value)"/>
+        <input type="range" class="range-max" :min="minValue" :max="maxValue" step="10" v-model.number="selectedMax" @input="$emit('maxValue', $event.target.value)"/>
       </div>
     </div>
 </template>
 
 <script>
 export default {
+  emits: ['minValue', 'maxValue', 'serviceName'],
   data() {
     return {
-      selectedMin: 200,
-      selectedMax: 400,
+      selectedMin: 0,
+      selectedMax: 1000,
       minValue: 0,
       maxValue: 1000,
       priceGap: 50,
