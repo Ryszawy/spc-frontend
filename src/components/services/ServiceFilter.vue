@@ -1,4 +1,14 @@
 <template>
+   <div class="text-input">
+      <header>
+        <h2>Service Name</h2>
+      </header>
+      <input
+        placeholder="serviceName"
+        type="text"
+        id="serviceName"
+      />
+    </div>
   <div class="wrapper">
       <header>
         <h2>Price Range</h2>
@@ -34,6 +44,7 @@ export default {
       minValue: 0,
       maxValue: 1000,
       priceGap: 50,
+      inputText: '',
     };
   },
   computed: {
@@ -48,6 +59,22 @@ export default {
 </script>
 
 <style scoped>
+.text-input {
+  margin-top: 30px;
+}
+.text-input input,
+.text-input textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  font: inherit;
+}
+input:focus,
+textarea:focus {
+  background-color: #f0e6fd;
+  outline: none;
+  border-color: #3d008d;
+}
 header h2{
   font-size: 24px;
   font-weight: 600;
