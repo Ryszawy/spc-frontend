@@ -7,5 +7,5 @@ export default {
   },
   availableCities(state) {
     return state.availableCities;
-  }
+  },
 };

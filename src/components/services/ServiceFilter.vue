@@ -31,8 +31,23 @@
         <div class="progress" :style="{ left: percentageValueMin, right: percentageValueMax }"></div>
       </div>
       <div class="range-input">
-        <input type="range" class="range-min" :min="minValue" :max="maxValue" step="10" v-model.number="selectedMin" @input="$emit('minValue', $event.target.value)"/>
-        <input type="range" class="range-max" :min="minValue" :max="maxValue" step="10" v-model.number="selectedMax" @input="$emit('maxValue', $event.target.value)"/>
+        <input 
+          type="range" 
+          class="range-min" 
+          :min="minValue" 
+          :max="maxValue" 
+          step="10" 
+          v-model.number="selectedMin" 
+          @input="$emit('minValue', $event.target.value)"
+          />
+        <input 
+          type="range" 
+          class="range-max" 
+          :min="minValue" 
+          :max="maxValue" 
+          step="10" 
+          v-model.number="selectedMax" 
+          @input="$emit('maxValue', $event.target.value)"/>
       </div>
     </div>
 </template>
