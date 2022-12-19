@@ -23,6 +23,7 @@
           :price="service.price"
           >
         </service-item>
+        <p v-if="services.length === 0">There are no services</p>
       </ul>
       <p v-else>There are no services</p>
     </base-card>

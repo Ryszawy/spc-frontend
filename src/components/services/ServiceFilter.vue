@@ -19,12 +19,12 @@
       <div class="price-input">
         <div class="field">
           <span>Min</span>
-          <input type="number" class="input-min" v-model.number="selectedMin" @input="$emit('minValue', $event.target.value)">
+          <input type="number" class="input-min" :min="minValue" :max="maxValue" v-model.number="selectedMin" @input="$emit('minValue', $event.target.value)">
         </div>
         <div class="separator">-</div>
         <div class="field">
           <span>Max</span>
-          <input type="number" class="input-max" v-model.number="selectedMax" @input="$emit('maxValue', $event.target.value)">
+          <input type="number" class="input-max" :min="minValue" :max="maxValue" v-model.number="selectedMax" @input="$emit('maxValue', $event.target.value)">
         </div>
       </div>
       <div class="slider">
@@ -72,6 +72,21 @@ export default {
     percentageValueMax() {
       return 100 - (this.selectedMax / this.maxValue) * 100 + '%';
     },
+  },
+  watch: {
+    selectedMin() {
+      if (this.selectedMax - this.selectedMin < this.priceGap) {
+        this.selectedMin = this.selectedMax - this.priceGap;
+      }
+      if (this.selectedMin < this.minValue) {
+        this.selectedMin = this.minValue;
+      }
+    },
+    selectedMax() {
+      if (this.selectedMax - this.selectedMin < this.priceGap) {
+        this.selectedMax = this.selectedMin + this.priceGap; 
+      }
+    }
   }
 }
 </script>
@@ -162,8 +177,8 @@ input[type="number"]::-webkit-inner-spin-button {
   -moz-appearance: none;
 }
 input[type="range"]::-webkit-slider-thumb{
-  height: 17px;
-  width: 17px;
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
   background: #bc00dd;
   pointer-events: auto;
@@ -171,8 +186,8 @@ input[type="range"]::-webkit-slider-thumb{
   box-shadow: 0 0 6px rgba(0,0,0,0.05);
 }
 input[type="range"]::-moz-range-thumb{
-  height: 17px;
-  width: 17px;
+  height: 18px;
+  width: 18px;
   border: none;
   border-radius: 50%;
   background: #bc00dd;
