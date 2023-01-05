@@ -26,6 +26,16 @@ export default {
               description: 'This is service 2 by servicepoint 1',
               price: 700,
             }
+          ],
+          disabledDates: [
+            {
+              start: new Date(2023, 0, 6),
+              end: new Date(2023, 0, 6),
+            },
+            {
+              start: new Date(2023, 0, 8),
+              end: new Date(2023, 0, 8)
+            }
           ]
         }, 
         {

@@ -1,9 +1,8 @@
 <template>
   <base-card>
     <form @submit.prevent="submitForm">
-      <div class="form-control">
-        <label for="date">Pick a date</label>
-        <input type="date" id="date" v-model="date"/>
+      <div class=actions>
+        <v-date-picker mode="date" v-model="date" :disabled-dates="checkDisabledDates" />
       </div>
       <div class="form-control">
         <label for="city-picker">Pick a city</label>
@@ -27,6 +26,7 @@
 </template>
 
 <script>
+
 export default {
   props: ['passCities', 'price'],
   data() {
@@ -34,12 +34,29 @@ export default {
       pickedCity: null,
       date: null,
       description: null,
+      disabledDates: null,
     };
+  },
+  computed: {
+    checkDisabledDates() {
+      if (this.disabledDates) {
+        return this.disabledDates;
+      } else {
+        return null;
+      }
+    }
   },
   methods: {
     submitForm() {
-      console.log(this.pickedCity);
+      console.log(this.pickedCity, this.date);
+    },
+    getDisabledDates() {
+      const selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.$route.params.id);
+      this.disabledDates = selectedPoint.disabledDates;
     }
+  },
+  created() {
+    this.getDisabledDates();
   }
 }
 </script>
