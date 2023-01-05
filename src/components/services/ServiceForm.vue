@@ -48,7 +48,15 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log(this.pickedCity, this.date);
+      this.$store.dispatch('orders/submitOrder', {
+        userId: this.$store.getters.userId,
+        pointId: this.$route.params.id,
+        serviceId: this.$route.params.serviceId,
+        desc: this.description,
+        city: this.pickedCity,
+        date: this.date,
+      });
+      this.$router.replace('/userServices');
     },
     getDisabledDates() {
       const selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.$route.params.id);
