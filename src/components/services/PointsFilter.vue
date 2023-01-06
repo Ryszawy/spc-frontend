@@ -2,27 +2,25 @@
   <base-card>
     <h2>Find Your ServicePoint</h2>
     <span class="filter-option" 
-      v-for="city in getCities"
-      :key="city"
+      v-for="city in cities"
+      :key="city.id"
       >
-      <input type="checkbox" :id="city" checked @change="setFilter"/>
-      <label :for="city">{{ city.toUpperCase() }}</label> 
+      <input type="checkbox" :id="city.name" checked @change="setFilter"/>
+      <label :for="city.name">{{ city.name.toUpperCase() }}</label> 
     </span>
   </base-card>
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
   emits: ['change-filter'],
   data() {
     return {
       filters: null,
+      cities: [],
     };
-  },
-  computed: {
-    getCities() {
-      return this.$store.getters['services/availableCities'];
-    },
   },
   methods: {
     setFilter(event) {
@@ -42,6 +40,16 @@ export default {
   },
   created() {
     this.prepareFilters();
+  },
+  mounted() {
+    axios.get('https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/cities')
+      .then((response) => {
+        console.log(response.data);
+        this.cities = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 </script>

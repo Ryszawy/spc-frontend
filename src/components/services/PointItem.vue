@@ -1,7 +1,6 @@
 <template>
   <li>
     <h3>{{ name }}</h3>
-    <h4>{{ description }}</h4>
     <div>
       <base-badge v-for="city in cities" :key="city" :type="city" :title="city"></base-badge>
     </div>
@@ -13,7 +12,7 @@
 
 <script>
 export default {
-  props: ['id', 'name', 'description', 'cities'],
+  props: ['id', 'name', 'cities'],
   computed: {
     servicePointDetailsLink() {
       return this.$route.path + '/' + this.id;

@@ -9,7 +9,7 @@ export default {
       availableCities: ['lodz', 'poznan', 'krakow', 'warszawa'],
       servicePoints: [
         {
-          idPoint: 'sp1',
+          idPoint: '1',
           servicePointName: 'ServicePoint 1',
           descriptionPoint: 'This is ServicePoint 1',
           cities: ['lodz', 'poznan'],
@@ -39,7 +39,7 @@ export default {
           ]
         }, 
         {
-          idPoint: 'sp2',
+          idPoint: '2',
           servicePointName: 'ServicePoint 2',
           descriptionPoint: 'This is ServicePoint 2',
           cities: ['poznan'],
@@ -53,7 +53,7 @@ export default {
           ]
         },
         {
-          idPoint: 'sp3',
+          idPoint: '3',
           servicePointName: 'ServicePoint 3',
           descriptionPoint: 'This is ServicePoint 3',
           cities: ['krakow'],

@@ -25,17 +25,32 @@ export default {
     margin-right: 0.5rem;
 }
 
-.lodz {
+.Lodz {
     background-color: #3d008d;
     color: white;
 }
 
-.poznan {
+.Warsaw {
+    background-color: #2e1164;
+    color: white;
+}
+
+.Gdansk {
+    background-color: #c424a9;
+    color: white;
+}
+
+.adsx {
+  background-color: #6d31db;
+    color: white;
+}
+
+.Poznan {
     background-color: #71008d;
     color: white;
 }
 
-.krakow {
+.Krakow {
     background-color: #8d006e;
     color: white;
 }
