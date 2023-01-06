@@ -1,46 +1,44 @@
 <template>
   <base-card>
     <h2>{{ name }}</h2>
-    <p>{{ description }}</p>
   </base-card>
-  <service-form v-if="this.service" :passCities="this.cities" :price="price"></service-form>
+  <service-form :passCities="cities" :price="price"></service-form>
 </template>
 
 <script>
+const axios = require('axios').default;
+
 import ServiceForm from '@/components/services/ServiceForm.vue';
 
 export default {
   props: ['id', 'serviceId'],
   data() {
     return {
-      service: null,
+      name: null,
+      price: null,
       cities: null,
     };
   },
   components: {
     ServiceForm,
   },
-  computed: {
-    name() {
-      return this.service.serviceName;
-    },
-    description() {
-      return this.service.description;
-    },
-    price() {
-      return this.service.price;
-    },
-  },
-  methods: {
-    getService() {
-      const selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.id);
-      this.cities = selectedPoint.cities;
-      const serviceArray = selectedPoint.services.filter(service => service.id === this.serviceId);
-      this.service = serviceArray[0];
-    }
-  },
-  created() {
-    this.getService();
+  mounted() {
+    axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/services/${this.$props.serviceId}`)
+      .then((response) => {
+        this.name = response.data.name;
+        this.price = response.data.price;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/companies/${this.$props.id}/cities`)
+      .then((response) => {
+        this.cities = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 </script>

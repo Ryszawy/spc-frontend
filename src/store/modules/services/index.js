@@ -15,13 +15,13 @@ export default {
           cities: ['lodz', 'poznan'],
           services: [
             {
-              id: 'p1s1',
+              id: '3',
               serviceName: 'Service 1_1',
               description: 'This is service 1 by servicepoint 1',
               price: 100,
             },
             {
-              id: 'p1s2',
+              id: '4',
               serviceName: 'Service 2_1',
               description: 'This is service 2 by servicepoint 1',
               price: 700,
@@ -45,7 +45,7 @@ export default {
           cities: ['poznan'],
           services: [
             {
-              id: 'p2s1',
+              id: '3',
               serviceName: 'Service 1_2',
               description: 'This is service 1 by servicepoint 2',
               price: 200,
@@ -59,13 +59,13 @@ export default {
           cities: ['krakow'],
           services: [
             {
-              id: 'p3s1',
+              id: '3',
               serviceName: 'Service 1_3',
               description: 'This is service 1 by servicepoint 3',
               price: 300,
             },
             {
-              id: 'p3s2',
+              id: '4',
               serviceName: 'Service 2_3',
               description: 'This is service 2 by servicepoint 3',
               price: 500,
@@ -79,13 +79,13 @@ export default {
           cities: ['lodz', 'poznan'],
           services: [
             {
-              id: 'p1s1',
+              id: '3',
               serviceName: 'Service 1_1',
               description: 'This is service 1 by servicepoint 1',
               price: 100,
             },
             {
-              id: 'p1s2',
+              id: '4',
               serviceName: 'Service 2_1',
               description: 'This is service 2 by servicepoint 1',
               price: 700,
@@ -109,13 +109,13 @@ export default {
           cities: ['lodz', 'poznan'],
           services: [
             {
-              id: 'p1s1',
+              id: '3',
               serviceName: 'Service 1_1',
               description: 'This is service 1 by servicepoint 1',
               price: 100,
             },
             {
-              id: 'p1s2',
+              id: '4',
               serviceName: 'Service 2_1',
               description: 'This is service 2 by servicepoint 1',
               price: 700,
@@ -139,13 +139,13 @@ export default {
           cities: ['lodz', 'poznan'],
           services: [
             {
-              id: 'p1s1',
+              id: '3',
               serviceName: 'Service 1_1',
               description: 'This is service 1 by servicepoint 1',
               price: 100,
             },
             {
-              id: 'p1s2',
+              id: '4',
               serviceName: 'Service 2_1',
               description: 'This is service 2 by servicepoint 1',
               price: 700,
@@ -169,13 +169,13 @@ export default {
           cities: ['lodz', 'poznan'],
           services: [
             {
-              id: 'p1s1',
+              id: '3',
               serviceName: 'Service 1_1',
               description: 'This is service 1 by servicepoint 1',
               price: 100,
             },
             {
-              id: 'p1s2',
+              id: '4',
               serviceName: 'Service 2_1',
               description: 'This is service 2 by servicepoint 1',
               price: 700,

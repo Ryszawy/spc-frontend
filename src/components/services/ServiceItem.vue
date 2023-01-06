@@ -1,7 +1,6 @@
 <template>
   <li>
     <h3>{{ name }}</h3>
-    <p>{{ description }}</p>
     <h4>{{ price }}/$</h4>
     <div class="actions">
       <base-button link :to="serviceOrderLink">Order</base-button>
@@ -11,7 +10,7 @@
 
 <script>
 export default {
-  props: ['id', 'name', 'description', 'price'],
+  props: ['id', 'name', 'price'],
   computed: {
     serviceOrderLink() {
       return this.$route.path + '/' + this.id;
@@ -26,13 +25,6 @@ li {
   border: 1px solid #424242;
   border-radius: 12px;
   padding: 1rem;
-}
-
-p { 
-  font-size: 18px; 
-  font-weight: 500; 
-  line-height: 32px; 
-  margin: 0 0 24px; 
 }
 
 h3 {

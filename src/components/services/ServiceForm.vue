@@ -7,8 +7,8 @@
       <div class="form-control">
         <label for="city-picker">Pick a city</label>
         <div v-for="city in passCities" :key="city">
-          <input type="radio" :id="city" name="city" :value="city" v-model="pickedCity"/>
-          <base-badge :type="city" :title="city"></base-badge>
+          <input type="radio" :id="city.name" name="city.name" :value="city.name" v-model="pickedCity"/>
+          <base-badge :type="city.name" :title="city.name"></base-badge>
         </div>
       </div>
       <div class="form-control">
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-
 export default {
   props: ['passCities', 'price'],
   data() {
@@ -61,11 +60,11 @@ export default {
     getDisabledDates() {
       const selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.$route.params.id);
       this.disabledDates = selectedPoint.disabledDates;
-    }
+    },
   },
   created() {
     this.getDisabledDates();
-  }
+  },
 }
 </script>
 

@@ -1,12 +1,9 @@
 <template>
   <base-card>
     <h2>Find Your ServicePoint</h2>
-    <span class="filter-option" 
-      v-for="city in cities"
-      :key="city.id"
-      >
-      <input type="checkbox" :id="city.name" checked @change="setFilter"/>
-      <label :for="city.name">{{ city.name.toUpperCase() }}</label> 
+    <span class="filter-option" v-for="city in cities" :key="city">
+      <input type="checkbox" :id="city" checked @change="setFilter" />
+      <label :for="city">{{ city.toUpperCase() }}</label>
     </span>
   </base-card>
 </template>
@@ -33,19 +30,15 @@ export default {
       this.filters = updatedFilters;
       this.$emit('change-filter', updatedFilters);
     },
-    prepareFilters() {
-      const cities = [...this.$store.getters['services/availableCities']];
-      this.filters = cities.reduce((o, key) => ({ ...o, [key]: true}), {});
+    removeDuplicates(arr) {
+      const companyCities = arr.map(city => city.name);
+      return [...new Set(companyCities)];
     }
-  },
-  created() {
-    this.prepareFilters();
   },
   mounted() {
     axios.get('https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/cities')
       .then((response) => {
-        console.log(response.data);
-        this.cities = response.data;
+        this.cities = this.removeDuplicates(response.data);
       })
       .catch((error) => {
         console.log(error);
