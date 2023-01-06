@@ -9,7 +9,11 @@
         <base-button link to="/login">Login</base-button>
       </div>
       <ul v-if="hasServicePoints">
-        <point-item v-for="point in fetchData" :key="point.id" :id="point.id" :name="point.name" :cities="getCitiesForCompany(point.id)">
+        <point-item v-for="point in fetchData" 
+          :key="point.id" 
+          :id="point.id" 
+          :name="point.name" 
+          :cities="getCitiesForCompany(point.id)">
         </point-item>
       </ul>
       <h3 v-else>No points found</h3>

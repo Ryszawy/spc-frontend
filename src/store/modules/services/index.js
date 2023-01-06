@@ -71,7 +71,127 @@ export default {
               price: 500,
             }
           ]
-        }
+        },
+        {
+          idPoint: '6',
+          servicePointName: 'ServicePoint 1',
+          descriptionPoint: 'This is ServicePoint 1',
+          cities: ['lodz', 'poznan'],
+          services: [
+            {
+              id: 'p1s1',
+              serviceName: 'Service 1_1',
+              description: 'This is service 1 by servicepoint 1',
+              price: 100,
+            },
+            {
+              id: 'p1s2',
+              serviceName: 'Service 2_1',
+              description: 'This is service 2 by servicepoint 1',
+              price: 700,
+            }
+          ],
+          disabledDates: [
+            {
+              start: new Date(2023, 0, 6),
+              end: new Date(2023, 0, 6),
+            },
+            {
+              start: new Date(2023, 0, 8),
+              end: new Date(2023, 0, 8)
+            }
+          ]
+        }, 
+        {
+          idPoint: '11',
+          servicePointName: 'ServicePoint 1',
+          descriptionPoint: 'This is ServicePoint 1',
+          cities: ['lodz', 'poznan'],
+          services: [
+            {
+              id: 'p1s1',
+              serviceName: 'Service 1_1',
+              description: 'This is service 1 by servicepoint 1',
+              price: 100,
+            },
+            {
+              id: 'p1s2',
+              serviceName: 'Service 2_1',
+              description: 'This is service 2 by servicepoint 1',
+              price: 700,
+            }
+          ],
+          disabledDates: [
+            {
+              start: new Date(2023, 0, 6),
+              end: new Date(2023, 0, 6),
+            },
+            {
+              start: new Date(2023, 0, 8),
+              end: new Date(2023, 0, 8)
+            }
+          ]
+        }, 
+        {
+          idPoint: '5',
+          servicePointName: 'ServicePoint 1',
+          descriptionPoint: 'This is ServicePoint 1',
+          cities: ['lodz', 'poznan'],
+          services: [
+            {
+              id: 'p1s1',
+              serviceName: 'Service 1_1',
+              description: 'This is service 1 by servicepoint 1',
+              price: 100,
+            },
+            {
+              id: 'p1s2',
+              serviceName: 'Service 2_1',
+              description: 'This is service 2 by servicepoint 1',
+              price: 700,
+            }
+          ],
+          disabledDates: [
+            {
+              start: new Date(2023, 0, 6),
+              end: new Date(2023, 0, 6),
+            },
+            {
+              start: new Date(2023, 0, 8),
+              end: new Date(2023, 0, 8)
+            }
+          ]
+        }, 
+        {
+          idPoint: '4',
+          servicePointName: 'ServicePoint 1',
+          descriptionPoint: 'This is ServicePoint 1',
+          cities: ['lodz', 'poznan'],
+          services: [
+            {
+              id: 'p1s1',
+              serviceName: 'Service 1_1',
+              description: 'This is service 1 by servicepoint 1',
+              price: 100,
+            },
+            {
+              id: 'p1s2',
+              serviceName: 'Service 2_1',
+              description: 'This is service 2 by servicepoint 1',
+              price: 700,
+            }
+          ],
+          disabledDates: [
+            {
+              start: new Date(2023, 0, 6),
+              end: new Date(2023, 0, 6),
+            },
+            {
+              start: new Date(2023, 0, 8),
+              end: new Date(2023, 0, 8)
+            }
+          ]
+        }, 
       ],
     };
   },

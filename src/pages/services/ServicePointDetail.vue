@@ -14,14 +14,8 @@
   <section>
     <base-card>
       <ul v-if="hasServices">
-        <service-item 
-          v-for="service in services"
-          :key="service.id"
-          :id="service.id"
-          :name="service.serviceName"
-          :description="service.description"
-          :price="service.price"
-          >
+        <service-item v-for="service in services" :key="service.id" :id="service.id" :name="service.serviceName"
+          :description="service.description" :price="service.price">
         </service-item>
         <p v-if="services.length === 0">There are no services</p>
       </ul>
@@ -31,6 +25,8 @@
 </template>
 
 <script>
+// const axios = require('axios');
+
 import ServiceItem from '@/components/services/ServiceItem.vue';
 import ServiceFilter from '@/components/services/ServiceFilter.vue';
 
@@ -84,6 +80,16 @@ export default {
   },
   created() {
     this.selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.id);
+    console.log(this.$props.id);
+  },
+  mounted() {
+    // axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/services/companies/${this.$props.id}`)
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 }
 </script>
