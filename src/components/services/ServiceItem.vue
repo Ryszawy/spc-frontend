@@ -3,17 +3,29 @@
     <h3>{{ name }}</h3>
     <h4>{{ price }}/$</h4>
     <div class="actions">
-      <base-button link :to="serviceOrderLink">Order</base-button>
+      <base-button @click="add()">Add</base-button>
     </div>
   </li>
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
   props: ['id', 'name', 'price'],
-  computed: {
-    serviceOrderLink() {
-      return this.$route.path + '/' + this.id;
+  methods: {
+    add() {
+      console.log('add')
+      axios.post('https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/services/companies', {
+        serviceId: this.id,
+        companyId: this.$props.id
+      })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
 }

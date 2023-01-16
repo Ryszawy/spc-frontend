@@ -2,14 +2,6 @@
   <header>
     <nav>
       <h1><router-link to="/">Skyflow</router-link></h1>
-      <ul>
-        <li>
-          <router-link to="/servicesPoint">All services</router-link>
-        </li>
-        <li>
-          <router-link to="/userServices">My services</router-link>
-        </li>
-      </ul>
     </nav>
   </header>
 </template>
