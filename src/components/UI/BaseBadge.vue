@@ -10,8 +10,8 @@ export default {
   computed: {
     text() {
       return this.title.toUpperCase();
-    }
-  }
+    },
+  },
 }
 </script>
   

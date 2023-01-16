@@ -1,43 +1,31 @@
 <template>
   <li>
-    <div>
-      <p>{{ pointName }}</p>
+    <div class="row">
+      <label>Company</label>
+      <p>{{ companyName }}</p>
     </div>
-    <div>
+    <div class="row">
+      <label>Service</label>
       <p>{{ serviceName }}</p>
     </div>
-    <div>
-      <p>{{ date }}</p>
+    <div class="row">
+      <label>Date</label>
+      <p>{{ orderDate }}</p>
     </div>
-    <div>
-      <p>{{ price }}</p>
+    <div class="row">
+      <label>Price</label>
+      <p>{{ price }}/$</p>
+    </div>
+    <div class="row">
+      <label>Description</label>
+      <p>{{ description }}</p>
     </div>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['pointId', 'serviceId', 'date'],
-  data() {
-    return {
-      pointName: null,
-      serviceName: null,
-      price: null,
-    }
-  },
-  methods: {
-    loadData() {
-      const selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.pointId);
-      this.pointName = selectedPoint.servicePointName;
-      const services = selectedPoint.services;
-      const selectedService = services.find(service => service.id === this.serviceId);
-      this.selectedPoint = selectedService.serviceName;
-      this.price = selectedService.price;
-    }
-  },
-  created() {
-    this.loadData();
-  }
+  props: ['companyName', 'description', 'orderDate', 'price', 'serviceName'],
 }
 </script>
 
@@ -50,5 +38,23 @@ li {
 
 p {
   margin: 0.5rem 0 0 0;
+}
+
+li {
+  text-align: center;
+}
+.col {
+  display: flex;
+  flex-direction: col;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
 }
 </style>

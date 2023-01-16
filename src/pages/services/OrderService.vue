@@ -17,6 +17,7 @@ export default {
       name: null,
       price: null,
       cities: null,
+      user: null,
     };
   },
   components: {
@@ -32,7 +33,7 @@ export default {
         console.log(error);
       });
 
-      axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/companies/${this.$props.id}/cities`)
+    axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/companies/${this.$props.id}/cities`)
       .then((response) => {
         this.cities = response.data;
       })

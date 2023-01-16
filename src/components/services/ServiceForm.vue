@@ -1,13 +1,13 @@
 <template>
   <base-card>
-    <form @submit.prevent="submitForm">
+    <div>
       <div class=actions>
         <v-date-picker mode="date" v-model="date" :disabled-dates="checkDisabledDates" />
       </div>
       <div class="form-control">
         <label for="city-picker">Pick a city</label>
-        <div v-for="city in passCities" :key="city">
-          <input type="radio" :id="city.name" name="city.name" :value="city.name" v-model="pickedCity"/>
+        <div v-for="city in cities" :key="city">
+          <input type="radio" :id="city.id" name="city.name" :value="city.id" v-model="pickedCity" />
           <base-badge :type="city.name" :title="city.name"></base-badge>
         </div>
       </div>
@@ -19,21 +19,28 @@
         <h2>{{ price }}/$</h2>
       </div>
       <div class=actions>
-        <base-button>Order Service</base-button>
+        <base-button @click="sendOrder()">Order Service</base-button>
       </div>
-    </form>
+    </div>
   </base-card>
 </template>
 
 <script>
+import { Auth } from 'aws-amplify';
+import axios from 'axios';
+// const axios = require('axios').default;
+
 export default {
   props: ['passCities', 'price'],
   data() {
     return {
       pickedCity: null,
-      date: null,
+      date: new Date(),
       description: null,
       disabledDates: null,
+      user: null,
+      cities: [],
+      id: null,
     };
   },
   computed: {
@@ -43,27 +50,47 @@ export default {
       } else {
         return null;
       }
-    }
+    },
   },
   methods: {
-    submitForm() {
-      this.$store.dispatch('orders/submitOrder', {
-        userId: this.$store.getters.userId,
-        pointId: this.$route.params.id,
-        serviceId: this.$route.params.serviceId,
-        desc: this.description,
-        city: this.pickedCity,
-        date: this.date,
+    format() {
+      this.date = new Date(this.date);
+      let currentDayOfMonth = this.date.getDate();
+      let currentMonth = this.date.getMonth() + 1;
+      if (currentMonth < 10) {
+        currentMonth = "0" + currentMonth;
+      }
+      if (currentDayOfMonth < 10) {
+        currentDayOfMonth = "0" + currentDayOfMonth;
+      }
+      return this.date.getFullYear() + '-' + currentMonth + '-' + currentDayOfMonth;
+    },
+    sendOrder() {
+      const newDate = this.format()
+      axios.post(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/users/services`, {
+        user_id: this.id,
+        company_id: parseInt(this.$route.params.id),
+        service_id: parseInt(this.$route.params.serviceId),
+        description: this.description,
+        city_id: this.pickedCity,
+        day: newDate,
       });
       this.$router.replace('/userServices');
     },
-    getDisabledDates() {
-      const selectedPoint = this.$store.getters['services/servicePoints'].find(point => point.idPoint === this.$route.params.id);
-      this.disabledDates = selectedPoint.disabledDates;
-    },
   },
-  created() {
-    this.getDisabledDates();
+  mounted() {
+    Auth.currentAuthenticatedUser().then(data => { this.user = data.username 
+    }).then(() => {
+      axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/users/${this.user}`).then(response => {
+        this.id = response.data.id;
+      });
+    });
+    axios.get(`https://c7naq2jtq1.execute-api.us-east-1.amazonaws.com/test/companies/${this.$route.params.id}/cities`)
+      .then((response) => {
+        this.cities = response.data;
+      }).catch((error) => {
+        console.log(error);
+      });
   },
 }
 </script>
